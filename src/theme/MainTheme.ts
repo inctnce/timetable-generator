@@ -103,10 +103,9 @@ theme = responsiveFontSizes(
 			},
 			MuiButton: {
 				defaultProps: {
-					root: {
-						size: "small",
-						disableElevation: true,
-					},
+					size: "small",
+					variant: "contained",
+					disableElevation: true,
 				},
 			},
 			MuiIconButton: {

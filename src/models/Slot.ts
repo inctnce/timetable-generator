@@ -1,3 +1,6 @@
-type TimeSlots = Map<string, string[]>;
+type Slot = {
+	day: string;
+	time: string;
+};
 
-export default TimeSlots;
+export default Slot;

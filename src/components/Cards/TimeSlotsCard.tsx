@@ -49,7 +49,7 @@ const TimeSlotsCard: React.FC<StackProps> = (props) => {
 
     const manualForm = useAppSelector((state) => state.manualForm);
     const timeSlots = [
-        ...manualForm.timeSlots
+        ...manualForm.slots
             .map((timeSlot) => (
                 <Collapse key={timeSlot} orientation="horizontal" >
                     <TimeSlotInput value={timeSlot} button="clear" />

@@ -1,8 +1,8 @@
 import { Stack } from "@mui/material"
 import React from "react"
-import RepeatsCard from "../../../Cards/RecurrenceCard"
-import TimeSlotsCard from "../../../Cards/TimeSlotsCard"
-import WorkdaysCard from "../../../Cards/WorkdaysCard"
+import RepeatsCard from "../../Cards/RecurrenceCard"
+import TimeSlotsCard from "../../Cards/TimeSlotsCard"
+import WorkdaysCard from "../../Cards/WorkdaysCard"
 
 const TimeForm: React.FC = () => {
     return (

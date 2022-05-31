@@ -6,6 +6,8 @@ export default interface Lesson {
 	tutor: string;
 	groups: string[];
 	type: DisciplineType;
+	foreground: string;
+	background: string;
 	day: string;
 	time: string;
 	room: Room;

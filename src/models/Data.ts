@@ -1,4 +1,4 @@
-import Discipline, { isInstanceOfDiscipline } from "./Discipline";
+import DisciplineColored, { isInstanceOfDisciplineColored } from "./DisciplineColored";
 import Room, { isInstanceOfRoom } from "./Room";
 
 export default interface Data {
@@ -6,7 +6,7 @@ export default interface Data {
 	slots: string[];
 	recurrence: number;
 	rooms: Room[];
-	disciplines: Discipline[];
+	disciplines: DisciplineColored[];
 }
 
 export function isInstanceOfData(arg: any): boolean {
@@ -24,7 +24,7 @@ export function isInstanceOfData(arg: any): boolean {
 		for (const room of rooms) if (!isInstanceOfRoom(room)) return false;
 
 		if (!Array.isArray(disciplines)) return false;
-		for (const discipline of disciplines) if (!isInstanceOfDiscipline(discipline)) return false;
+		for (const discipline of disciplines) if (!isInstanceOfDisciplineColored(discipline)) return false;
 
 		return true;
 	}

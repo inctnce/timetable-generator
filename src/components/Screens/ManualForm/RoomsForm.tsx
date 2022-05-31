@@ -1,7 +1,7 @@
 import { Collapse, Stack } from "@mui/material";
 import React from "react";
-import { useAppSelector } from "../../../../store/hooks";
-import RoomCard from "../../../Cards/RoomCard";
+import { useAppSelector } from "../../../store/hooks";
+import RoomCard from "../../Cards/RoomCard";
 import { TransitionGroup } from "react-transition-group"
 
 const RoomForm: React.FC = () => {

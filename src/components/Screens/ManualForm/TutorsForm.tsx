@@ -1,7 +1,7 @@
 import { Collapse, Stack } from "@mui/material";
 import React from "react";
-import { useAppSelector } from "../../../../store/hooks";
-import TutorCard from "../../../Cards/TutorCard";
+import { useAppSelector } from "../../../store/hooks";
+import TutorCard from "../../Cards/TutorCard";
 import { TransitionGroup } from 'react-transition-group';
 
 const TutorsForm: React.FC = () => {

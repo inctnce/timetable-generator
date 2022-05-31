@@ -3,8 +3,8 @@ import Tutor from "../../models/Tutor";
 
 export default interface ManualForm {
 	activeStep: number;
-	workdays: string[];
-	timeSlots: string[];
+	days: string[];
+	slots: string[];
 	recurrence: number;
 	rooms: Room[];
 	tutors: string[];

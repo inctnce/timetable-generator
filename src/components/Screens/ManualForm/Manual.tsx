@@ -1,10 +1,10 @@
 import { ArrowBackIos, ArrowForwardIos } from "@mui/icons-material";
 import { Button, Stack } from "@mui/material";
 import React from "react";
-import { useAppDispatch, useAppSelector } from "../../../../store/hooks";
-import ManualFormStepper from "../../../Stepper/Stepper";
+import { useAppDispatch, useAppSelector } from "../../../store/hooks";
+import ManualFormStepper from "../../Stepper/Stepper";
 import TimeForm from "./TimeForm";
-import { manualFormSlice } from "../../../../store/reducers/manualForm";
+import { manualFormSlice } from "../../../store/reducers/manualForm";
 import RoomForm from "./RoomsForm";
 import TutorsForm from "./TutorsForm";
 

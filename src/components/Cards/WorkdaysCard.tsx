@@ -43,7 +43,7 @@ const WorkdaysCard: React.FC<StackProps> = (props) => {
         <WorkdaySwitch
             key={workday}
             label={workday}
-            selected={manualForm.workdays.findIndex((v) => v === workday) !== -1}
+            selected={manualForm.days.findIndex((v) => v === workday) !== -1}
         />
     ))
 

@@ -1,11 +1,12 @@
 import Data from "../models/Data";
-import Discipline from "../models/Discipline";
+import DisciplineColored from "../models/DisciplineColored";
 import Room from "../models/Room";
+import generateColor from "../theme/color";
 import choice from "./choice";
 
 const generateData = (streamCount = 1, lessonCount = 18, groupCount = 3, lessonsPerTutor = 2): Data => {
 	const roomCount = streamCount * groupCount * 2;
-	const disciplines: Discipline[] = [];
+	const disciplines: DisciplineColored[] = [];
 
 	for (let i = 0; i < streamCount; i++) {
 		const groups: string[] = [];
@@ -20,10 +21,13 @@ const generateData = (streamCount = 1, lessonCount = 18, groupCount = 3, lessons
 			if (type === "workshop") disciplineGroups = [choice(groups)];
 			else disciplineGroups = groups.sort(() => 0.5 - Math.random()).slice(0, 3);
 
+			const [foreground, background] = generateColor();
 			disciplines.push({
 				name: "D-" + (Math.random() * 10000).toFixed(4),
 				type: type,
 				recurrence: 2,
+				foreground,
+				background,
 				groups: disciplineGroups,
 				tutor: choice(tutors),
 			});
