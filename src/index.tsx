@@ -1,8 +1,9 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 import { Provider } from 'react-redux';
+import { PersistGate } from 'redux-persist/integration/react'
 import { BrowserRouter } from "react-router-dom"
-import { store } from './store/store';
+import { store, persister } from './store';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import './index.css';
@@ -18,7 +19,9 @@ root.render(
     <BrowserRouter>
       <LocalizationProvider dateAdapter={AdapterDateFns}>
         <Provider store={store}>
-          <App />
+          <PersistGate persistor={persister}>
+            <App />
+          </PersistGate>
         </Provider>
       </LocalizationProvider>
     </BrowserRouter>
