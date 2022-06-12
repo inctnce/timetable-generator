@@ -1,7 +1,7 @@
 {
   "name": "timetable-generator",
   "main": "public/main.js",
-  "homepage": "./",
+  "homepage": "https://github.com/inctnce/timetable-generator",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
