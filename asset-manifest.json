@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/inctnce/timetable-generator/static/css/main.4152c3d3.css",
+    "main.js": "/inctnce/timetable-generator/static/js/main.4e19b232.js",
+    "static/js/787.d3a28f3b.chunk.js": "/inctnce/timetable-generator/static/js/787.d3a28f3b.chunk.js",
+    "static/media/load-file.svg": "/inctnce/timetable-generator/static/media/load-file.74508d4a79ffa3bebad620e2f4ba6e8d.svg",
+    "static/media/no-timetables.svg": "/inctnce/timetable-generator/static/media/no-timetables.3479ba3f347dab223c2354c5968121ee.svg",
+    "index.html": "/inctnce/timetable-generator/index.html",
+    "main.4152c3d3.css.map": "/inctnce/timetable-generator/static/css/main.4152c3d3.css.map",
+    "main.4e19b232.js.map": "/inctnce/timetable-generator/static/js/main.4e19b232.js.map",
+    "787.d3a28f3b.chunk.js.map": "/inctnce/timetable-generator/static/js/787.d3a28f3b.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.4152c3d3.css",
+    "static/js/main.4e19b232.js"
+  ]
+}

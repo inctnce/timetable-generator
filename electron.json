@@ -1,9 +1,0 @@
-{
-	"extends": null,
-	"appId": "com.inctnce.timetable-generator",
-	"files": ["dist/**/*", "build/**/*", "node_modules/**/*", "package.json"],
-	"directories": {
-		"buildResources": "assets"
-	},
-	"copyright": "inctnce"
-}
