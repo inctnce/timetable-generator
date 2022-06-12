@@ -7,6 +7,7 @@ const initialState: Timetable = {
 	data: null,
 	lessons: [],
 	filter: { groups: [], tutors: [], rooms: [], type: "groups", items: [], selected: "" },
+	week: 0,
 };
 
 export const timetableSlice = createSlice({
@@ -24,7 +25,7 @@ export const timetableSlice = createSlice({
 			const uniqueTutors = new Set<string>();
 			for (const lesson of action.payload) {
 				for (const group of lesson.groups) uniqueGroups.add(group);
-				uniqueTutors.add(lesson.tutor);
+				uniqueTutors.add(lesson.tutor.name);
 				state.filter.rooms.push(lesson.room.name);
 			}
 
@@ -44,8 +45,12 @@ export const timetableSlice = createSlice({
 		},
 
 		setFilterSelected: (state: Timetable, action: PayloadAction<string>) => {
-			console.log(action.payload);
 			state.filter.selected = action.payload;
+		},
+
+		setWeek: (state: Timetable, action: PayloadAction<number>) => {
+			if (state.data && state.week + action.payload > -1)
+				state.week = (state.week + action.payload) % state.data?.recurrence;
 		},
 	},
 });

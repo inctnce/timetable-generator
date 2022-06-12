@@ -1,4 +1,4 @@
-import { Paper, Tab, TabProps, Tabs, TabsProps } from "@mui/material";
+import { MenuItem, Paper, Select, SelectChangeEvent, Tab, TabProps, Tabs, TabsProps } from "@mui/material";
 import { styled } from '@mui/material/styles';
 import React from "react";
 import { useAppDispatch, useAppSelector } from "../../../../../store/hooks";
@@ -42,20 +42,22 @@ const FilterType: React.FC = () => {
     const dispatch = useAppDispatch();
     const { filter } = useAppSelector(({ timetable }) => timetable);
 
-    const handleChangeType = (event: React.SyntheticEvent, type: TFilterType) => {
-        dispatch(timetableSlice.actions.setFilterType(type))
+    const handleChange = (event: SelectChangeEvent) => {
+        dispatch(timetableSlice.actions.setFilterType(event.target.value as TFilterType))
     }
 
+
+
     return (
-        <Paper sx={{ width: "fit-content" }} >
-            <StyledTabs
-                onChange={handleChangeType}
-                value={filter.type}>
-                <StyledTab value="groups" label="Группа" />
-                <StyledTab value="rooms" label="Кабинет" />
-                <StyledTab value="tutors" label="Преподаватель" />
-            </StyledTabs>
-        </Paper>
+        <Select
+            value={filter.type}
+            onChange={handleChange}
+            size="small"
+        >
+            <MenuItem value="groups" >Группы</MenuItem>
+            <MenuItem value="tutors" >Преподаватели</MenuItem>
+            <MenuItem value="rooms" >Кабинеты</MenuItem>
+        </Select>
     )
 }
 

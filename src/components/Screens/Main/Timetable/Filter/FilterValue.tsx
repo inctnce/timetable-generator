@@ -1,9 +1,9 @@
+import React from "react";
 import { MenuItem, Select, SelectChangeEvent } from "@mui/material"
-import React from "react"
 import { useAppDispatch, useAppSelector } from "../../../../../store/hooks"
 import { timetableSlice } from "../../../../../store/reducers/timetable";
 
-const FilterValue = () => {
+const FilterValue: React.FC = () => {
 
     const dispatch = useAppDispatch()
     const { filter } = useAppSelector(({ timetable }) => timetable);
@@ -18,19 +18,14 @@ const FilterValue = () => {
         <Select
             value={filter.selected}
             onChange={handleChange}
-            size="medium"
-            sx={{
-                width: 300
-            }}
+            size="small"
             MenuProps={{
                 PaperProps: {
                     sx: {
                         maxHeight: 300,
-                        width: 300
                     }
                 }
             }}
-            variant="standard"
             autoWidth
         >
             {selectItems}

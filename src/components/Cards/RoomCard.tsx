@@ -37,7 +37,6 @@ const RoomCard: React.FC<RoomCardProps> = (props) => {
     }
 
     const handleAddButton = () => {
-        console.log(equipment);
         if (name !== "" && type !== "lecture") dispatch(manualFormSlice.actions.addRoom({ name, type, equipment }));
         clear();
     }

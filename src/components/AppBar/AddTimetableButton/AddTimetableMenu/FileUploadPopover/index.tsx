@@ -31,6 +31,7 @@ const FileUploadPopover: React.FC<Props> = ({ anchorEl, open, onClose }) => {
         <Popover
             anchorEl={anchorEl}
             open={open}
+            // disablePortal={true}
             onClose={onClose}
             anchorOrigin={{
                 vertical: 'center',

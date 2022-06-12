@@ -3,19 +3,22 @@ import Lesson from "../../models/Lesson";
 import Slot from "../../models/Slot";
 import choice from "../choice";
 import { GraphColoring, Vertex } from "./Graph";
+import SlotsCollection from "./SlotsCollection";
 
 class Scheduler extends GraphColoring<Lesson> {
-	protected slots: Slot[];
+	protected slots: SlotsCollection;
 
 	constructor(public data: Data) {
 		super([]);
-		this.slots = this.buildSlots();
+		this.slots = new SlotsCollection(this.buildSlots());
 		this.vertices = [];
 	}
 
 	private buildSlots = () => {
 		const slots: Slot[] = [];
-		for (const day of this.data.days) for (const slot of this.data.slots) slots.push({ day, time: slot });
+		for (let week = 0; week < this.data.recurrence; week++)
+			for (const day of this.data.days) for (const slot of this.data.slots) slots.push({ week, day, slot });
+
 		return slots;
 	};
 
@@ -24,12 +27,13 @@ class Scheduler extends GraphColoring<Lesson> {
 		this.vertices = this.buildVertices(lessons);
 		this.buildEdges();
 
-		return this.greedy()
+		return this.greedy(this.slots.size)
 			.sort((v1, v2) => v1.color - v2.color)
 			.map((v) => ({
 				...v.data,
-				day: this.slots[v.color].day,
-				time: this.slots[v.color].time,
+				week: this.slots.getSlotByIndex(v.color).week,
+				day: this.slots.getSlotByIndex(v.color).day,
+				slot: this.slots.getSlotByIndex(v.color).slot,
 			}));
 	};
 
@@ -46,8 +50,9 @@ class Scheduler extends GraphColoring<Lesson> {
 						groups,
 						foreground,
 						background,
+						week: 0,
 						day: "",
-						time: "",
+						slot: "",
 						room: choice(this.data.rooms.filter((room) => room.type === type)),
 					});
 		}
@@ -56,7 +61,12 @@ class Scheduler extends GraphColoring<Lesson> {
 	};
 
 	private buildVertices = (lessons: Lesson[]) => {
-		return lessons.map((lesson) => new Vertex<Lesson>(lesson));
+		return lessons.map((lesson) => {
+			const forbiddenColors: number[] = [];
+			for (const slot of lesson.tutor.freeTime) forbiddenColors.push(this.slots.getSlotIndex(slot));
+
+			return new Vertex<Lesson>(lesson, [], -1, [], forbiddenColors);
+		});
 	};
 
 	private buildEdges = () => {

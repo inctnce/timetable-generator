@@ -1,7 +1,7 @@
 import React from 'react';
 import { CssBaseline, ThemeProvider, Stack } from "@mui/material"
 import theme from './theme/MainTheme';
-import AppBar from './components/AppBar/AppBar';
+import AppBar from './components/AppBar';
 import Router from './Router';
 
 

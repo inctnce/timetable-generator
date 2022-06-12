@@ -1,14 +1,14 @@
 import DisciplineType from "./DisciplineType";
 import Room from "./Room";
+import Slot from "./Slot";
+import Tutor from "./Tutor";
 
-export default interface Lesson {
+export default interface Lesson extends Slot {
 	name: string;
-	tutor: string;
+	tutor: Tutor;
 	groups: string[];
 	type: DisciplineType;
 	foreground: string;
 	background: string;
-	day: string;
-	time: string;
 	room: Room;
 }

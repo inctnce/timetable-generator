@@ -18,4 +18,5 @@ export default interface Timetable {
 	lessons: Lesson[];
 
 	filter: Filter;
+	week: number;
 }

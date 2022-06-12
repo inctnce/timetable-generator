@@ -1,6 +1,7 @@
 import Data from "../models/Data";
 import DisciplineColored from "../models/DisciplineColored";
 import Room from "../models/Room";
+import Tutor from "../models/Tutor";
 import generateColor from "../theme/color";
 import choice from "./choice";
 
@@ -12,8 +13,12 @@ const generateData = (streamCount = 1, lessonCount = 18, groupCount = 3, lessons
 		const groups: string[] = [];
 		for (let i = 0; i < groupCount; i++) groups.push("G-" + (Math.random() * 10000).toFixed(4));
 
-		const tutors: string[] = [];
-		for (let i = 0; i < lessonCount / lessonsPerTutor; i++) tutors.push("T-" + (Math.random() * 10000).toFixed(4));
+		const tutors: Tutor[] = [];
+		for (let i = 0; i < lessonCount / lessonsPerTutor; i++)
+			tutors.push({
+				name: "T-" + (Math.random() * 10000).toFixed(4),
+				freeTime: [],
+			});
 
 		for (let i = 0; i < lessonCount / 2; i++) {
 			const type = i % 2 === 0 ? "lecture" : "workshop";

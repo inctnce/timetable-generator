@@ -1,9 +1,9 @@
 import DisciplineType, { isInstanceOfDisciplineType } from "./DisciplineType";
-import { isInstanceOfTutor } from "./Tutor";
+import Tutor, { isInstanceOfTutor } from "./Tutor";
 
 export default interface Discipline {
 	name: string;
-	tutor: string;
+	tutor: Tutor;
 	groups: string[];
 	type: DisciplineType;
 	recurrence: number;

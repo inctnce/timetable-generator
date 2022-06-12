@@ -40,6 +40,7 @@ const FileUpload: React.FC = () => {
     };
 
     const handleButtonClick = () => {
+        console.log(1)
         if (inputFile.current)
             inputFile.current.click();
     }
