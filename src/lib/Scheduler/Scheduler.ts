@@ -65,7 +65,18 @@ class Scheduler extends GraphColoring<Lesson> {
 			const forbiddenColors: number[] = [];
 			for (const slot of lesson.tutor.freeTime) forbiddenColors.push(this.slots.getSlotIndex(slot));
 
-			return new Vertex<Lesson>(lesson, [], -1, [], forbiddenColors);
+			const undesiredColors: number[] = [];
+			for (let week = 0; week < this.data.recurrence; week++) {
+				for (const day of this.data.days) {
+					const slotsForDay = this.slots.getSlotsForDay(day, week);
+
+					const penultimateSlot = this.slots.getSlotIndex(slotsForDay.at(-2)!);
+					const lastSlot = this.slots.getSlotIndex(slotsForDay.at(-1)!);
+					undesiredColors.push(penultimateSlot, lastSlot);
+				}
+			}
+
+			return new Vertex<Lesson>(lesson, [], -1, undesiredColors, forbiddenColors);
 		});
 	};
 

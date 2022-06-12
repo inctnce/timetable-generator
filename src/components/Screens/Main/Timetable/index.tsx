@@ -1,6 +1,6 @@
 import { Stack } from "@mui/material";
 import React from "react";
-import Filter from "./Filter";
+import Filter from "./Toolbar";
 import Table from "./Table";
 
 const Timetable: React.FC = () => {

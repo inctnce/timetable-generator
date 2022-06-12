@@ -73,7 +73,7 @@ const Table: React.FC = () => {
             style={{
                 textAlign: "center",
                 paddingBottom: theme.spacing(3),
-                width: `calc(75%/${data.days.length})`
+                width: `calc(90%/${data.days.length})`
             }}
             key={day} >
             <Typography variant="h5" >{day}</Typography>

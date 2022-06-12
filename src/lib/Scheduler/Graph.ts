@@ -34,15 +34,15 @@ export class GraphColoring<T> extends Graph<T> {
 		const availableColors = new Set<number>(colors);
 		for (const v of vertex.adj) availableColors.delete(v.color);
 		for (const forbidden of vertex.forbiddenColors) availableColors.delete(forbidden);
-		for (const undesired of vertex.undesiredColors) availableColors.delete(undesired);
+
+		if (availableColors.size > vertex.undesiredColors.length)
+			for (const undesired of vertex.undesiredColors) availableColors.delete(undesired);
 
 		console.log(availableColors);
 		console.log(vertex.undesiredColors);
 		console.log(vertex.forbiddenColors);
-		console.log("================")
+		console.log("================");
 
-		if (availableColors.size > 0) return Array.from(availableColors);
-
-		return vertex.undesiredColors;
+		return Array.from(availableColors);
 	};
 }
