@@ -34,8 +34,6 @@ export class GraphColoring<T> extends Graph<T> {
 		if (availableColors.size > vertex.undesiredColors.length)
 			for (const undesired of vertex.undesiredColors) availableColors.delete(undesired);
 
-		console.log(availableColors);
-
 		return Array.from(availableColors);
 	};
 }

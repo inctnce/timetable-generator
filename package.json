@@ -1,10 +1,16 @@
 {
   "name": "timetable-generator",
-  "main": "public/main.js",
+  "main": "./public/electron.js",
+  "author": {
+    "name": "Artem Belov",
+    "email": "inctnce@icloud.com"
+  },
+  "description": "Simple app for scheduling uni timetables",
   "homepage": "./",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@electron/remote": "^2.0.8",
     "@date-io/date-fns": "^2.13.2",
     "@emotion/react": "^11.9.0",
     "@emotion/styled": "^11.8.1",
@@ -35,9 +41,33 @@
     "typescript": "^4.6.4",
     "web-vitals": "^2.1.4"
   },
+  "resolutions": {
+    "electron": "^11.0.1"
+  },
   "engines": {
     "npm": "7.0.0",
     "node": "16.0.0"
+  },
+  "build": {
+    "appId": "com.inctnce.timetable-generator",
+    "productName": "Timetable Generator",
+    "files": [
+      "build/**/*",
+      "node_modules/**/*"
+    ],
+    "directories": {
+      "buildResources": "static"
+    },
+    "mac": {
+      "category": "public.app-category.productivity",
+      "target": "dmg"
+    },
+    "win": {
+      "target": "nsis"
+    },
+    "linux": {
+      "target": "deb"
+    }
   },
   "scripts": {
     "start": "serve -s build",
@@ -46,7 +76,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "electron:serve": "concurrently -k \"cross-env BROWSER=none npm run dev\" \"npm run electron:start\"",
-    "electron:build": "npm run build && electron-builder --config ./electron.json -mwl -c.extraMetadata.main=build/main.js",
+    "electron:build": "npm run build && electron-builder -mwl",
     "electron:start": "wait-on tcp:3000 && electron .",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
@@ -59,18 +89,19 @@
   },
   "browserslist": {
     "production": [
+      "last 1 electron version",
       ">0.2%",
       "not dead",
       "not op_mini all"
     ],
     "development": [
+      "last 1 electron version",
       "last 1 chrome version",
       "last 1 firefox version",
       "last 1 safari version"
     ]
   },
   "devDependencies": {
-    "@electron/remote": "^2.0.8",
     "@types/papaparse": "^5.3.2",
     "@types/remote-redux-devtools": "^0.5.5",
     "cross-env": "^7.0.3",

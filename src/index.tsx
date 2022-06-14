@@ -2,7 +2,7 @@ import React from 'react';
 import { createRoot } from 'react-dom/client';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react'
-import { BrowserRouter } from "react-router-dom"
+import { BrowserRouter, HashRouter } from "react-router-dom"
 import { store, persister } from './store';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
@@ -16,7 +16,7 @@ const root = createRoot(container);
 
 root.render(
   <React.StrictMode>
-    <BrowserRouter>
+    <HashRouter>
       <LocalizationProvider dateAdapter={AdapterDateFns}>
         <Provider store={store}>
           <PersistGate persistor={persister}>
@@ -24,7 +24,7 @@ root.render(
           </PersistGate>
         </Provider>
       </LocalizationProvider>
-    </BrowserRouter>
+    </HashRouter>
   </React.StrictMode>
 );
 
